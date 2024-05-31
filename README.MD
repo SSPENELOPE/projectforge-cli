@@ -123,9 +123,11 @@ Specifies browser support for production and development environments.
 
 Thank you for considering contributing to our project! We welcome contributions from everyone, regardless of their experience level. By participating in this project, you agree to abide by the [Code of Conduct](./code-of-conduct.md).
 
+If you would like to be added as a contributor, please email me at sspenelope23@gmail.com. Detail how you plan to contribute and why you want to contribute.
+
 ### Reporting Bugs
 
-If you find a bug, please open an issue on our [GitHub repository](https://github.com/your-username/your-repository). Please include a detailed description of the bug, steps to reproduce it, and any relevant screenshots or error messages.
+If you find a bug, please open an issue on our [GitHub repository](https://github.com/SSPENELOPE/projectforge-cli). Please include a detailed description of the bug, steps to reproduce it, and any relevant screenshots or error messages.
 
 ### Requesting Features
 
