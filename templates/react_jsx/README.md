@@ -24,4 +24,11 @@
 -   "react-toastify"
 -   "web-vitals"
 
-# HAPPY HACKING
+## Pages
+
+### Home Page
+- This page is a boiler plate that leverages the Navbar and Footer component, customize them as needed
+
+### Login Page
+- This page contains a React Bootstrap
+

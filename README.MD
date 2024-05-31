@@ -147,3 +147,6 @@ We expect all contributors to adhere to our [Code of Conduct](./code-of-conduct.
 ### License
 
 By contributing to this project, you agree that your contributions will be licensed under the project's [license](./LICENSE).
+
+## Credits
+- All of the people before me who have created and continue to update their wonderful NPM packages included in this project
