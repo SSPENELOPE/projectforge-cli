@@ -6,7 +6,7 @@ function Home() {
     return (
         <div className="home-wrapper">
           <Navbar />
-          <h1 className="text-center">WELCOME TO YOUR NEW AND IMPROVED REACT APP</h1>
+          <h1 className="text-center">WELCOME TO YOUR NEW AND IMPROVED CREATE REACT APP</h1>
           <Footer />
         </div>
     )
