@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "module": "CommonJS",
+      "esModuleInterop": true,
+      "target": "es6",
+      "moduleResolution": "node",
+      "outDir": "./dist",
+      "baseUrl": "./",
+      "paths": {
+        "*": ["node_modules/*", "src/types/*"]
+      }
+    },
+    "types": ["node", "jest", "supertest"],
+    "jest": {
+      "preset": "ts-jest"
+    }
+  }
