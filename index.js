@@ -5,7 +5,7 @@ import * as fs from "fs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import createDirectoryContents from "./createDirectoryContent.js";
-import npmInstall from "./npmInstall.js";
+import ProcessHandler from "./processHandler.js";
 
 
 const CURR_DIR = process.cwd();
@@ -43,6 +43,6 @@ inquirer.prompt(QUESTIONS).then(async (answers) => {
 
   const newProjectPath = `${CURR_DIR}/${projectName}`;
 
-  npmInstall(newProjectPath);
+  ProcessHandler.handlePackageInstall(newProjectPath);
 });
 
