@@ -5,8 +5,10 @@ import * as fs from "fs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import createDirectoryContents from "./createDirectoryContent.js";
+import npmInstall from "./npmInstall.js";
+
+
 const CURR_DIR = process.cwd();
-import { execSync } from "child_process";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const CHOICES = fs.readdirSync(`${__dirname}/templates`);
@@ -30,7 +32,7 @@ const QUESTIONS = [
   },
 ];
 
-inquirer.prompt(QUESTIONS).then((answers) => {
+inquirer.prompt(QUESTIONS).then(async (answers) => {
   const projectChoice = answers["project-choice"];
   const projectName = answers["project-name"];
   const templatePath = `${__dirname}/templates/${projectChoice}`;
@@ -39,30 +41,8 @@ inquirer.prompt(QUESTIONS).then((answers) => {
 
   createDirectoryContents(templatePath, projectName);
 
-  // Define newProjectPath after the directory is created
   const newProjectPath = `${CURR_DIR}/${projectName}`;
 
-  // Display message indicating that removing node_modules is in progress
-  // process.stdout.write("Removing node_modules... ");
-
-  // // Execute rm command
-  // execSync("rm -rf node_modules", { cwd: newProjectPath });
-
-  // // Clear the message
-  // process.stdout.clearLine();
-  // process.stdout.cursorTo(0);
-
-  // Display message indicating that npm install is in progress
-  process.stdout.write("Running npm install... ");
-
-  // Execute npm install command
-  execSync("npm install", { cwd: newProjectPath });
-
-  // Clear the message
-  process.stdout.clearLine();
-  process.stdout.cursorTo(0);
-
-  console.log("npm install completed.");
-
-  console.log("Enjoy your new app, Happy Hacking");
+  npmInstall(newProjectPath);
 });
+
