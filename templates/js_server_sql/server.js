@@ -1,10 +1,13 @@
-import express, { Application, application } from "express";
-import routes from "./controllers";
-import sequelize from "./config/connection";
-import cors from "cors";
-import cookieParser from 'cookie-parser';
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
-const app: Application = express();
+const routes = require('./controllers/index');
+const sequelize = require('./config/connection');
+
+const app = express();
+
+
 
 console.log("Server starting...");
 
@@ -19,9 +22,9 @@ app.use(cookieParser());
 
 app.use(routes);
 
-const startServer = async (): Promise<void> => {
+const startServer = async () => {
     try {
-      const PORT: number = process.env.PORT as unknown as number || 3001;
+      const PORT = process.env.PORT || 3001;
 
       // Ensure the database connection is established before starting the server
       await sequelize.authenticate();
@@ -42,4 +45,4 @@ const startServer = async (): Promise<void> => {
   // Call the function to start the server
   startServer();
 
-  export default app;
+module.exports = app;

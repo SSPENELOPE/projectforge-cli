@@ -10,14 +10,14 @@ class ProcessHandler {
 
     const npmCommand = os.platform() === "win32" ? "where" : "which";
     const packageJsonPath = path.join(newProjectPath, "package.json");
+
     try {
-      // Read package.json file
       const packageJsonData = fs.readFileSync(packageJsonPath, "utf-8");
       const packageJson = JSON.parse(packageJsonData);
 
-      // Count the number of dependencies and devDependencies
       const dependencies = packageJson.dependencies || {};
       const devDependencies = packageJson.devDependencies || {};
+
       const totalPackages =
         Object.keys(dependencies).length + Object.keys(devDependencies).length;
 
