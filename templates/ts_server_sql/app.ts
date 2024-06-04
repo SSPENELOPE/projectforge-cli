@@ -1,12 +1,14 @@
 import express, { Application } from "express";
 import routes from "./controllers";
-import sequelize from "./config/connection";
+import db from "./config/connection";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
 
 const app: Application = express();
 
 console.log("Server starting...");
+db.on("error", (error: any) => console.error(error));
+db.once("open", () => console.log("Connected to db"));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -18,26 +20,5 @@ app.use(cors({
 app.use(cookieParser());
 
 app.use(routes);
-
-const startServer = async () => {
-    try {
-      // Ensure the database connection is established before starting the server
-      await sequelize.authenticate();
-      console.log("Connection to the database has been established successfully.");
-  
-      // await sequelize.sync();
-  
-      await sequelize.sync({ force: false });
-  
-      app.listen(PORT, () => {
-        console.log(`Now listening on port: ${PORT}`);
-      });
-    } catch (error) {
-      console.error("Unable to connect to the database:", error);
-    }
-  };
-  
-  // Call the function to start the server
-  startServer();
 
 export default app;

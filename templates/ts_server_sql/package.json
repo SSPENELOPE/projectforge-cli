@@ -1,11 +1,12 @@
 {
-  "name": "ts_server_mongo",
+  "name": "ts_server_sql",
   "version": "1.0.0",
   "description": "Support for the React TypeScript front end",
   "main": "server.ts",
   "scripts": {
     "start": "nodemon server.ts",
     "start dev": "ts-node-dev server.ts",
+    "seed": "ts-node seeds/seed.ts",
     "test": "jest --coverage"
   },
   "author": "Tyler Poepping",

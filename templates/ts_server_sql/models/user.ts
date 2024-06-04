@@ -46,9 +46,6 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [8, 0],
-      },
     },
   },
   {
@@ -66,4 +63,4 @@ User.init(
   }
 );
 
-module.exports = User;
+export default User;

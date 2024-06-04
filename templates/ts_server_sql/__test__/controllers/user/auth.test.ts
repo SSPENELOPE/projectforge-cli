@@ -1,7 +1,7 @@
 import request from "supertest";
 import bcrypt from "../../../__mocks__/bcrypt";
 import { User } from "../../../models/user";
-import app from "../../../app";
+import app from "../../../server";
 import dotenv from "dotenv";
 dotenv.config();
 var jwt = require("jsonwebtoken");
@@ -27,13 +27,13 @@ describe("User routes", () => {
   describe("POST /user/auth/login", () => {
     it("should login a user with valid credentials", async () => {
       const user = {
-        _id: "testUserId",
+        id: "testUserId",
         email: "test@example.com",
         password: "hashedPassword",
       };
 
       // Mocking User.findOne to return the user
-      User.findOne = jest.fn().mockResolvedValue(user as User);
+      User.findOne = jest.fn().mockResolvedValue(user as unknown as User);
 
       // Mocking bcrypt.compare to return true for password validation
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
@@ -66,13 +66,13 @@ describe("User routes", () => {
 
     it("should return 401 if password is incorrect", async () => {
       const user = {
-        _id: "testUserId",
+        id: "testUserId",
         email: "test@example.com",
         password: "hashedPassword",
       };
 
       // Mocking User.findOne to return the user
-      User.findOne = jest.fn().mockResolvedValue(user as UserDocument);
+      User.findOne = jest.fn().mockResolvedValue(user as unknown as User);
 
       // Mocking bcrypt.compare to return false for incorrect password
       (bcrypt.compare as jest.Mock).mockResolvedValue(false);
@@ -98,7 +98,7 @@ describe("User routes", () => {
 
       const response = await request(app)
         .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`TRUT=${token}`]);
+        .set("Cookie", [`YOUR-COOKIE=${token}`]);
 
       expect(response.status).toBe(200);
       expect(response.body.message).toBe("You have access");
@@ -121,7 +121,7 @@ describe("User routes", () => {
 
       const response = await request(app)
         .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`TRUT=${invalidToken}`]);
+        .set("Cookie", [`YOUR-COOKIE=${invalidToken}`]);
 
       expect(response.status).toBe(401);
       expect(response.body.message).toBe("Invalid or expired token");
@@ -138,7 +138,7 @@ describe("User routes", () => {
 
       const response = await request(app)
         .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`TRUT=${expiredToken}`]);
+        .set("Cookie", [`YOUR-COOKIE=${expiredToken}`]);
 
       expect(response.status).toBe(401);
       expect(response.body.message).toBe("Invalid or expired token");
@@ -152,8 +152,6 @@ describe("User routes", () => {
         username: "testuser",
         email: "test@example.com",
         password: "testpassword",
-        firstName: "Test",
-        lastName: "User",
       };
 
       // Mocking User.findOne to return null, indicating user doesn't exist
@@ -178,12 +176,10 @@ describe("User routes", () => {
         username: "testuser",
         email: "test@example.com",
         password: "testpassword",
-        firstName: "Test",
-        lastName: "User",
       };
 
       // Mocking User.findOne to return an existing user
-      User.findOne = jest.fn().mockResolvedValue(existingUser as UserDocument);
+      User.findOne = jest.fn().mockResolvedValue(existingUser as unknown as User);
 
       const response = await request(app)
         .post("/user/auth/signup")
@@ -196,15 +192,15 @@ describe("User routes", () => {
 
   // LOGOUT TEST
   describe("POST /logout", () => {
-    it("should clear the TRUT cookie and return a success message", async () => {
+    it("should clear the YOUR-COOKIE cookie and return a success message", async () => {
       // First, log in the user to set the cookie
       const user = {
-        _id: "testUserId",
+        id: "testUserId",
         email: "test@example.com",
         password: "hashedPassword",
       };
 
-      User.findOne = jest.fn().mockResolvedValue(user as UserDocument);
+      User.findOne = jest.fn().mockResolvedValue(user as unknown as User);
 
       // Mocking bcrypt.compare to return true for password validation
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
@@ -233,7 +229,7 @@ describe("User routes", () => {
           expect(logoutResponse.headers["set-cookie"]).toBeDefined();
           // Check if the cookie is cleared
           const cookies = logoutResponse.headers["set-cookie"][0];
-          expect(cookies).toMatch(/TRUT=;/);
+          expect(cookies).toMatch(/YOUR-COOKIE=;/);
           expect(cookies).toMatch(/Expires=/);
         });
 

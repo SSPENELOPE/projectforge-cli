@@ -5,6 +5,10 @@ const userData = require('./userData.json')
 
 const seedDatabase = async () => {
 
+  userData.forEach((element: any) => {
+    console.log(element);
+  });
+  
   await sequelize.sync({ force: true })
 
   const users = await User.bulkCreate(userData, {
