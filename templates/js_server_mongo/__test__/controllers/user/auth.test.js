@@ -1,14 +1,15 @@
-import request from "supertest";
-import bcrypt from "../../../__mocks__/bcrypt";
-import { User, UserDocument } from "../../../src/models/user";
-import app from "../../../src/app";
-import dotenv from "dotenv";
-dotenv.config();
+const request = require("supertest");
+require('dotenv').config();
 var jwt = require("jsonwebtoken");
-const secretKey: string = process.env.JWT_Key as string;
+
+const app = require("../../../app");
+const User = require("../../../models/user");
+const bcrypt =require('../../../__mocks__/bcrypt');
+
+const secretKey = process.env.JWT_Key;
 
 // Mock the User model
-jest.mock("../../../src/models/user");
+jest.mock("../../../models/user");
 
 // Mock Bcrypt
 jest.mock("bcrypt", () => ({
@@ -33,13 +34,13 @@ describe("User routes", () => {
       };
 
       // Mocking User.findOne to return the user
-      User.findOne = jest.fn().mockResolvedValue(user as UserDocument);
+      User.findOne = jest.fn().mockResolvedValue(user);
 
       // Mocking bcrypt.compare to return true for password validation
-      (bcrypt.compare as jest.Mock).mockResolvedValue(true);
+      (bcrypt.compare).mockResolvedValue(true);
 
       // Mocking jwt.sign to return a token
-      (jwt.sign as jest.Mock).mockReturnValue("mockedToken");
+      (jwt.sign).mockReturnValue("mockedToken");
 
       const response = await request(app).post("/user/auth/login").send({
         email: "test@example.com",
@@ -72,10 +73,10 @@ describe("User routes", () => {
       };
 
       // Mocking User.findOne to return the user
-      User.findOne = jest.fn().mockResolvedValue(user as UserDocument);
+      User.findOne = jest.fn().mockResolvedValue(user);
 
       // Mocking bcrypt.compare to return false for incorrect password
-      (bcrypt.compare as jest.Mock).mockResolvedValue(false);
+      (bcrypt.compare).mockResolvedValue(false);
 
       const response = await request(app).post("/user/auth/login").send({
         email: "test@example.com",
@@ -94,11 +95,11 @@ describe("User routes", () => {
         expiresIn: "1h",
       });
 
-      (jwt.verify as jest.Mock).mockReturnValue({ userId: "userId" });
+      (jwt.verify).mockReturnValue({ userId: "userId" });
 
       const response = await request(app)
         .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`TRUT=${token}`]);
+        .set("Cookie", [`YOUR-COOKIE=${token}`]);
 
       expect(response.status).toBe(200);
       expect(response.body.message).toBe("You have access");
@@ -115,7 +116,7 @@ describe("User routes", () => {
     it("should return 401 if token is invalid", async () => {
       const invalidToken = "invalidToken";
 
-      (jwt.verify as jest.Mock).mockImplementation(() => {
+      (jwt.verify).mockImplementation(() => {
         throw new Error("Invalid token");
       });
 
@@ -132,7 +133,7 @@ describe("User routes", () => {
         expiresIn: "-1h",
       });
 
-      (jwt.verify as jest.Mock).mockImplementation(() => {
+      (jwt.verify).mockImplementation(() => {
         throw new Error("Token expired");
       });
 
@@ -183,7 +184,7 @@ describe("User routes", () => {
       };
 
       // Mocking User.findOne to return an existing user
-      User.findOne = jest.fn().mockResolvedValue(existingUser as UserDocument);
+      User.findOne = jest.fn().mockResolvedValue(existingUser);
 
       const response = await request(app)
         .post("/user/auth/signup")
@@ -196,7 +197,7 @@ describe("User routes", () => {
 
   // LOGOUT TEST
   describe("POST /logout", () => {
-    it("should clear the TRUT cookie and return a success message", async () => {
+    it("should clear the YOUR-COOKIE cookie and return a success message", async () => {
       // First, log in the user to set the cookie
       const user = {
         _id: "testUserId",
@@ -204,13 +205,13 @@ describe("User routes", () => {
         password: "hashedPassword",
       };
 
-      User.findOne = jest.fn().mockResolvedValue(user as UserDocument);
+      User.findOne = jest.fn().mockResolvedValue(user);
 
       // Mocking bcrypt.compare to return true for password validation
-      (bcrypt.compare as jest.Mock).mockResolvedValue(true);
+      (bcrypt.compare).mockResolvedValue(true);
 
       // Mocking jwt.sign to return a token
-      (jwt.sign as jest.Mock).mockReturnValue("mockedToken");
+      (jwt.sign).mockReturnValue("mockedToken");
 
       await request(app)
         .post("/user/auth/login")
