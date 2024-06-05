@@ -69,7 +69,7 @@ describe("User routes", () => {
         id: "testUserId",
         email: "test@example.com",
         password: "hashedPassword",
-      };
+    };
 
       // Mocking User.findOne to return the user
       User.findOne = jest.fn().mockResolvedValue(user);

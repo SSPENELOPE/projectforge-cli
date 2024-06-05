@@ -1,21 +1,19 @@
-import { Router, Request, Response } from "express";
-import { User, UserDocument } from "../../models/user";
-import bcrypt = require("bcrypt");
-import dotenv from "dotenv";
-dotenv.config();
+const router = require("express").Router();
+const User = require("../../models/user");
+require("dotenv").config();
+const bcrypt = require("bcrypt");
 
 var jwt = require("jsonwebtoken");
 
-const router: Router = Router();
-const saltRounds: number = 10;
-const secretKey: string = process.env.JWT_Key;
+const saltRounds = 10;
+const secretKey = process.env.JWT_Key;
 
 // SIGNUP
-router.post("/signup", async (req: Request, res: Response): Promise<any> => {
+router.post("/signup", async (req, res) => {
   const { username, password, email, firstName, lastName } = req.body;
 
   try {
-    const existingUser: UserDocument | null = await User.findOne({ email });
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) {
       return res
@@ -24,10 +22,10 @@ router.post("/signup", async (req: Request, res: Response): Promise<any> => {
     }
 
     // Hash the password
-    const hashedPassword: string = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Create a new user instance with the hashed password
-    const newUser: UserDocument = new User({
+    const newUser = new User({
       username,
       email,
       password: hashedPassword,
@@ -48,12 +46,12 @@ router.post("/signup", async (req: Request, res: Response): Promise<any> => {
 });
 
 // LOGIN
-router.post("/login", async (req: Request, res: Response): Promise<any> => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
     // Check if the user exists
-    const user: UserDocument | null = await User.findOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res
@@ -62,7 +60,7 @@ router.post("/login", async (req: Request, res: Response): Promise<any> => {
     }
 
     // Check if the password is correct
-    const isPasswordValid: boolean = await bcrypt.compare(
+    const isPasswordValid = await bcrypt.compare(
       password,
       user.password
     );
@@ -73,7 +71,7 @@ router.post("/login", async (req: Request, res: Response): Promise<any> => {
         .json({ message: "Credentials are not recognized" });
     } else {
       // If the credentials are valid, generate a JWT
-        const token: string = jwt.sign({ userId: user._id }, secretKey, {
+        const token = jwt.sign({ userId: user._id }, secretKey, {
         expiresIn: "1h", // Token expiration time
       });
 
@@ -94,7 +92,7 @@ router.post("/login", async (req: Request, res: Response): Promise<any> => {
 });
 
 // CHECK IF THE USER IS LOGGEDIN
-router.get("/isLoggedIn", async (req: Request, res: Response): Promise<any> => {
+router.get("/isLoggedIn", async (req, res) => {
   const token = req.cookies["YOUR-COOKIE"];
   if (token) {
     try {
@@ -109,7 +107,7 @@ router.get("/isLoggedIn", async (req: Request, res: Response): Promise<any> => {
 });
 
 // LOGOUT
-router.post("/logout", async (req: Request, res: Response): Promise<void> => {
+router.post("/logout", async (req, res) => {
   try {
       res.clearCookie("YOUR-COOKIE", {
         httpOnly: true,
@@ -122,4 +120,4 @@ router.post("/logout", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-export default router;
+module.exports = router;
