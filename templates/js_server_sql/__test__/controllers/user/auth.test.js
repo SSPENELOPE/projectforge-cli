@@ -1,8 +1,8 @@
-import request from "supertest";
-import bcrypt from "../../../__mocks__/bcrypt";
-import { User } from "../../../models/user";
-import app from "../../../server";
-import dotenv from "dotenv";
+const request = require("supertest");
+const bcrypt = require("../../../__mocks__/bcrypt");
+const User = require("../../../models/user");
+const app = require("../../../server");
+const dotenv = require("dotenv");
 dotenv.config();
 var jwt = require("jsonwebtoken");
 const secretKey = process.env.JWT_Key;
@@ -24,7 +24,7 @@ jest.mock("jsonwebtoken", () => ({
 
 describe("User routes", () => {
   // LOGIN TEST
-  describe("POST /user/auth/login", () => {
+  describe("POST Login routes", () => {
     it("should login a user with valid credentials", async () => {
       const user = {
         id: "testUserId",
@@ -87,66 +87,8 @@ describe("User routes", () => {
     });
   });
 
-  // VERIFY JWT TEST
-  describe("GET /isLoggedIn", () => {
-    it("should return 200 and user data if token is valid", async () => {
-      const token = jwt.sign({ userId: "userId" }, secretKey, {
-        expiresIn: "1h",
-      });
-
-      (jwt.verify).mockReturnValue({ userId: "userId" });
-
-      const response = await request(app)
-        .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`YOUR-COOKIE=${token}`]);
-
-      expect(response.status).toBe(200);
-      expect(response.body.message).toBe("You have access");
-      expect(response.body.user).toMatchObject({ userId: "userId" });
-    });
-
-    it("should return 401 if no token is provided", async () => {
-      const response = await request(app).get("/user/auth/isLoggedIn");
-
-      expect(response.status).toBe(401);
-      expect(response.body.message).toBe("No token provided");
-    });
-
-    it("should return 401 if token is invalid", async () => {
-      const invalidToken = "invalidToken";
-
-      (jwt.verify).mockImplementation(() => {
-        throw new Error("Invalid token");
-      });
-
-      const response = await request(app)
-        .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`YOUR-COOKIE=${invalidToken}`]);
-
-      expect(response.status).toBe(401);
-      expect(response.body.message).toBe("Invalid or expired token");
-    });
-
-    it("should return 401 if token is expired", async () => {
-      const expiredToken = jwt.sign({ userId: "userId" }, secretKey, {
-        expiresIn: "-1h",
-      });
-
-      (jwt.verify).mockImplementation(() => {
-        throw new Error("Token expired");
-      });
-
-      const response = await request(app)
-        .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`YOUR-COOKIE=${expiredToken}`]);
-
-      expect(response.status).toBe(401);
-      expect(response.body.message).toBe("Invalid or expired token");
-    });
-  });
-
   // SIGNUP TEST
-  describe("POST /user/auth/signup", () => {
+  describe("POST signup routes", () => {
     it("should create a new user", async () => {
       const newUser = {
         username: "testuser",
@@ -234,6 +176,64 @@ describe("User routes", () => {
         });
 
       // Perform login to set the cookie
+    });
+  });
+
+    // VERIFY JWT TEST
+  describe("GET /isLoggedIn", () => {
+    it("should return 200 and user data if token is valid", async () => {
+      const token = jwt.sign({ userId: "userId" }, secretKey, {
+        expiresIn: "1h",
+      });
+
+      (jwt.verify).mockReturnValue({ userId: "userId" });
+
+      const response = await request(app)
+        .get("/user/auth/isLoggedIn")
+        .set("Cookie", [`YOUR-COOKIE=${token}`]);
+
+      expect(response.status).toBe(200);
+      expect(response.body.message).toBe("You have access");
+      expect(response.body.user).toMatchObject({ userId: "userId" });
+    });
+
+    it("should return 401 if no token is provided", async () => {
+      const response = await request(app).get("/user/auth/isLoggedIn");
+
+      expect(response.status).toBe(401);
+      expect(response.body.message).toBe("No token provided");
+    });
+
+    it("should return 401 if token is invalid", async () => {
+      const invalidToken = "invalidToken";
+
+      (jwt.verify).mockImplementation(() => {
+        throw new Error("Invalid token");
+      });
+
+      const response = await request(app)
+        .get("/user/auth/isLoggedIn")
+        .set("Cookie", [`YOUR-COOKIE=${invalidToken}`]);
+
+      expect(response.status).toBe(401);
+      expect(response.body.message).toBe("Invalid or expired token");
+    });
+
+    it("should return 401 if token is expired", async () => {
+      const expiredToken = jwt.sign({ userId: "userId" }, secretKey, {
+        expiresIn: "-1h",
+      });
+
+      (jwt.verify).mockImplementation(() => {
+        throw new Error("Token expired");
+      });
+
+      const response = await request(app)
+        .get("/user/auth/isLoggedIn")
+        .set("Cookie", [`YOUR-COOKIE=${expiredToken}`]);
+
+      expect(response.status).toBe(401);
+      expect(response.body.message).toBe("Invalid or expired token");
     });
   });
 });

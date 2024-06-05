@@ -7,8 +7,6 @@ const sequelize = require('./config/connection');
 
 const app = express();
 
-
-
 console.log("Server starting...");
 
 app.use(express.urlencoded({ extended: false }));

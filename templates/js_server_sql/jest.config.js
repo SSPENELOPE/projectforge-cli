@@ -1,5 +1,5 @@
 module.exports = {
-  preset: "jest",
-  // ...defaults,
   testEnvironment: 'node',
+  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
+  moduleFileExtensions: ['js', 'json', 'node'],
 };
