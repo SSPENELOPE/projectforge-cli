@@ -1,14 +1,14 @@
 import request from "supertest";
 import bcrypt from "../../../__mocks__/bcrypt";
-import { User, UserDocument } from "../../../src/models/user";
-import app from "../../../src/app";
+import { User, UserDocument } from "../../../models/user";
+import app from "../../../app";
 import dotenv from "dotenv";
 dotenv.config();
 var jwt = require("jsonwebtoken");
 const secretKey: string = process.env.JWT_Key as string;
 
 // Mock the User model
-jest.mock("../../../src/models/user");
+jest.mock("../../../models/user");
 
 // Mock Bcrypt
 jest.mock("bcrypt", () => ({
@@ -98,7 +98,7 @@ describe("User routes", () => {
 
       const response = await request(app)
         .get("/user/auth/isLoggedIn")
-        .set("Cookie", [`TRUT=${token}`]);
+        .set("Cookie", [`YOUR-COOKIE=${token}`]);
 
       expect(response.status).toBe(200);
       expect(response.body.message).toBe("You have access");
@@ -196,7 +196,7 @@ describe("User routes", () => {
 
   // LOGOUT TEST
   describe("POST /logout", () => {
-    it("should clear the TRUT cookie and return a success message", async () => {
+    it("should clear the YOUR-COOKIE cookie and return a success message", async () => {
       // First, log in the user to set the cookie
       const user = {
         _id: "testUserId",

@@ -37,47 +37,7 @@
 
 #### As of right now there is only 1 React template which is Vanilla React. The TSX verison is currently being developed and worked on.
 
-### <u>Vanilla React</u>
-**Included Libraries:**
 
-- **[@fortawesome/fontawesome-free](https://www.npmjs.com/package/@fortawesome/fontawesome-free):** FontAwesome icons library.
-- **[@fortawesome/free-regular-svg-icons](https://www.npmjs.com/package/@fortawesome/free-regular-svg-icons):** FontAwesome regular style icons.
-- **[@fortawesome/free-solid-svg-icons](https://www.npmjs.com/package/@fortawesome/free-solid-svg-icons):** FontAwesome solid style icons.
-- **[@fortawesome/react-fontawesome](https://www.npmjs.com/package/@fortawesome/react-fontawesome):** FontAwesome integration for React.
-- **[@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom):** Jest matchers for DOM.
-- **[@testing-library/react](https://www.npmjs.com/package/@testing-library/react):** Testing utilities for React components.
-- **[@testing-library/user-event](https://www.npmjs.com/package/@testing-library/user-event):** Simulate user events for testing.
-- **[bootstrap](https://www.npmjs.com/package/bootstrap):** Bootstrap CSS framework.
-- **[jwt-decode](https://www.npmjs.com/package/jwt-decode):** JWT token decoder.
-- **[mdb-react-ui-kit](https://www.npmjs.com/package/mdb-react-ui-kit):** Material Design Bootstrap components for React.
-- **[react](https://www.npmjs.com/package/react):** React library.
-- **[react-bootstrap](https://www.npmjs.com/package/react-bootstrap):** Bootstrap components built with React.
-- **[react-dom](https://www.npmjs.com/package/react-dom):** React DOM package.
-- **[react-router-dom](https://www.npmjs.com/package/react-router-dom):** React router library for web applications.
-- **[react-scripts](https://www.npmjs.com/package/react-scripts):** Create React App scripts.
-- **[react-toastify](https://www.npmjs.com/package/react-toastify):** Toast notifications for React applications.
-- **[web-vitals](https://www.npmjs.com/package/web-vitals):** Web vitals monitoring.
-
-### Scripts
-
-- **start:** Start the development server.
-- **build:** Build the application for production.
-- **test:** Run tests.
-- **eject:** Eject configuration from Create React App.
-
-### ESLint Configuration
-
-Extends the following ESLint configurations:
-
-- react-app
-- react-app/jest
-
-### Browserslist
-
-Specifies browser support for production and development environments.
-
-- **Production:** >0.2%, not dead, not op_mini all
-- **Development:** last 1 chrome version, last 1 firefox version, last 1 safari version
 
 
 ## React_Native Templates
