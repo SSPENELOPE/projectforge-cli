@@ -7,7 +7,6 @@ import { fileURLToPath } from "url";
 import createDirectoryContents from "./createDirectoryContent.js";
 import ProcessHandler from "./processHandler.js";
 
-
 const CURR_DIR = process.cwd();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
