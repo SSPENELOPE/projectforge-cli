@@ -1,4 +1,4 @@
-# Getting Started with my own Create-React-App
+# Getting Started with the new and Improved Create-React-App
 
 - This is the new improved version from my own cli
 - Here you will have most of the libraries you need pre-installed and ready to get hacking.

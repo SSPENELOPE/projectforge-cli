@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# New and Improved Create React App with TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What is this?
+Welcome to your new and improved create react app. This app is the modernized version of create react app. It includes the following features:
+1. **Hot Reloading**: Make changes to your code and see them instantly reflected in the browser without having to manually refresh the page.
+2. **ES6+ Support**: Write your code using the latest JavaScript features like arrow functions, template literals, and destructuring assignments.
+3. **CSS Modules**: Use CSS Modules to encapsulate styles and prevent class name collisions.
+4. **Code Splitting**: Optimize your app's performance by splitting your code into smaller chunks that are loaded on demand.
+5. **Routing**: Implement client-side routing with ease using popular libraries like React Router.
+6. **State Management**: Manage your app's state efficiently with libraries like Redux or MobX.
+7. **Testing**: Write unit tests for your components using testing frameworks like Jest or React Testing Library.
+8. **Linting and Formatting**: Ensure code quality and consistency with tools like ESLint and Prettier.
+9. **Production Build**: Generate optimized and minified bundles for deployment to production environments.
 
-## Available Scripts
+This project includes the following packages:
+- @fortawesome/fontawesome-free@^6.5.2
+- @fortawesome/free-regular-svg-icons@^6.5.2
+- @fortawesome/free-solid-svg-icons@^6.5.2
+- @fortawesome/react-fontawesome@^0.2.2
+- @testing-library/jest-dom@^5.17.0
+- @testing-library/react@^13.4.0
+- @testing-library/user-event@^13.5.0
+- @types/jest@^27.5.2
+- @types/node@^16.18.97
+- @types/react@^18.3.3
+- @types/react-dom@^18.3.0
+- bootstrap@^5.3.3
+- mdb-react-ui-kit@^8.0.0
+- react@^18.3.1
+- react-bootstrap@^2.10.2
+- react-dom@^18.3.1
+- react-router-dom@^6.23.1
+- react-scripts@5.0.1
+- react-toastify@^10.0.5
+- typescript@^4.9.5
+- web-vitals@^2.1.4
 
-In the project directory, you can run:
+## Pages
 
-### `npm start`
+### Home Page
+- This page is a boiler plate that leverages the Navbar and Footer component, customize them as needed
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Login Page
+- This page contains a React Bootstrap form that takes in a username or email and a users password
+- You can update this as need but you should have most of the tools you need to easily set this up package and send your data to an endpoint 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Signup Page
+- The signup page contains a React Bootstrap form ready to take in a bunch of user parameters. It is already prepped and stored in a state variable that is updated through a handler function. The submit function is ready for you to package up your data and send it to an endpoint
 
-### `npm test`
+## Components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Navbar
+- The navbar is built using React Bootstrap, edit and change it as needed. 
+- The links are all dummy links so you will need to update those all except for the home link
 
-### `npm run build`
+### Footer
+- The footer is built using MDB, feel free to update or scrap it. Use at your projects needs
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Classes
+- Included in the utils folder is the AuthService class. This class is set up and primed for you to send of your login and signup data to your desired endpoint. Other authentication logic can be added here.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Feel free to explore the codebase and customize it to fit your needs. Happy coding!

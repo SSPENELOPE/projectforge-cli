@@ -1,50 +1,43 @@
-# Welcome to your Expo app 👋
+# React_Native Expo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## What is in this?
+- As of right now this is just a boilerplate react native expo mobile app. I have lost of plans for future development to ensure that this mobile app comes pre packaged with all the modern features a mobile app should include which has a login/signup page with a more advanced navigation section at the bottom of the app.
 
-## Get started
+- Stay tuned on NPM to watch for more updates to this
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+## Libraries
+**Included Libraries:**
+- **[@expo/vector-icons](https://www.npmjs.com/package/@expo/vector-icons):** Customizable icon library for Expo.
+- **[@react-navigation/native](https://www.npmjs.com/package/@react-navigation/native):** Routing and navigation for React Native apps.
+- **[expo](https://www.npmjs.com/package/expo):** Tools and libraries for building and deploying React Native apps.
+- **[expo-constants](https://www.npmjs.com/package/expo-constants):** Provides system information constants for Expo projects.
+- **[expo-font](https://www.npmjs.com/package/expo-font):** Manage and load fonts in Expo projects.
+- **[expo-linking](https://www.npmjs.com/package/expo-linking):** Deep linking and handling URLs in Expo apps.
+- **[expo-router](https://www.npmjs.com/package/expo-router):** Routing library optimized for Expo projects.
+- **[expo-splash-screen](https://www.npmjs.com/package/expo-splash-screen):** Splash screen API for Expo apps.
+- **[expo-status-bar](https://www.npmjs.com/package/expo-status-bar):** Customizable status bar component for Expo projects.
+- **[expo-system-ui](https://www.npmjs.com/package/expo-system-ui):** Access to system UI components in Expo apps.
+- **[expo-web-browser](https://www.npmjs.com/package/expo-web-browser):** Launch and manage web browser instances in Expo apps.
+- **[react](https://www.npmjs.com/package/react):** React library for building user interfaces.
+- **[react-dom](https://www.npmjs.com/package/react-dom):** React DOM library for web applications.
+- **[react-native](https://www.npmjs.com/package/react-native):** Framework for building native apps using React.
+- **[react-native-gesture-handler](https://www.npmjs.com/package/react-native-gesture-handler):** Gesture handling library for React Native.
+- **[react-native-reanimated](https://www.npmjs.com/package/react-native-reanimated):** React Native library for smooth animations.
+- **[react-native-safe-area-context](https://www.npmjs.com/package/react-native-safe-area-context):** Access to safe area insets in React Native.
+- **[react-native-screens](https://www.npmjs.com/package/react-native-screens):** Native navigation primitives for React Native.
+- **[react-native-web](https://www.npmjs.com/package/react-native-web):** React Native for web applications.
+- **[@expo/metro-runtime](https://www.npmjs.com/package/@expo/metro-runtime):** Metro runtime for Expo projects.
 
-2. Start the app
+#### Scripts:
+- **start:** `expo start`
+- **reset-project:** `node ./scripts/reset-project.js`
+- **android:** `expo start --android`
+- **ios:** `expo start --ios`
+- **web:** `expo start --web`
+- **test:** `jest --watchAll`
+- **lint:** `expo lint`
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+#### Browserlist:
+  - "production": [">0.2%", "not dead", "not op_mini all"],
+  - "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
