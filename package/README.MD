@@ -4,6 +4,8 @@ This is a command-line interface (CLI) tool called ProjectForge, a powerful proj
 
 Jump ahead with pre-built project templates. The ProjectForge CLI provides a wide range of project templates that you can use as a starting point for your projects. These templates are designed to save you time and effort by providing a solid foundation with pre-configured settings and structures. Simply select the template that best suits your project requirements and start building without having to start from scratch. With the ProjectForge CLI, you can accelerate your development process and focus on what matters most - bringing your ideas to life. 
 
+[![npm](https://img.shields.io/npm/dm/projectforge-cli.svg)](https://www.npmjs.com/package/projectforge-cli)
+
 ## Installation
 
 To use the ProjectForge CLI, you need to install it globally on your machine. Run the following command:
@@ -18,6 +20,7 @@ or
 yarn global add projectforge-cli
 ```
 
+NOTE: I HAVE NOT TESTED THIS PROJECT ON A MAC OS. Anyone willing to test that for me and give feedback would be greatly appreciated!
 ## Usage
 
 Once installed, you can use the ProjectForge CLI to create new projects, manage tasks, and collaborate with your team. The CLI provides a set of templates that you can use as a starting point for your projects.
@@ -30,7 +33,7 @@ projectforge-cli
 
 This will prompt you to select a template for your project. Choose the one that best fits your needs and follow the instructions.
 
-![alt text](assets/projectforge.png)
+![alt text](package/assets/projectforge.png)
 
 ## Templates
 
