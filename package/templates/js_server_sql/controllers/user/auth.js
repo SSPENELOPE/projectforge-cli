@@ -6,8 +6,6 @@ dotenv.config();
 
 var jwt = require("jsonwebtoken");
 
-
-
 const secretKey = process.env.JWT_KEY; // You must configure this in your .env file!!!
 
 // SIGNUP

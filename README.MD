@@ -18,10 +18,14 @@
 - [Credits](#credits)
 - [License](#license)
 - [Testing](#testing)
+- [Futuer Development](#future-developement)
 
 ## Installation
 
 ### Installing the CLI
+
+You can either go to npm and [download](https://www.npmjs.com/package/projectforge-cli) it there or follow the steps below to install it via the repository.
+
 - Clone this repo using the SSH method and `cd package` into the package folder
 - Run the `npm install` command at the root of the directory after installation (where the index.js exists). 
 - From the root, in your terminal, run the command `npm install -g`, this will install the projectforge-cli globally to your machine.
@@ -36,9 +40,13 @@
 - Please use the test folder to test the release of the package 
 
 ## Usage
-- This project will eventually be uploaded to npm as a package. Look out for future instructions on where to get this from NPM.
+NPM:
+- The package is now live and on npm, feel free to head over there and [download](https://www.npmjs.com/package/projectforge-cli) it!
 
-- For now, If you installed the CLI the right way, you should be able to call the `projectforge-cli` from any directory on you machine and choose which template to install. Watch the progress bar go and happy hacking!
+Regular Install:
+- For now, If you installed the CLI the right way following the steps above, you should be able to call the `projectforge-cli` from any directory on your machine and choose which template to install. Watch the progress bar go and happy hacking!
+
+![alt text](assets/projectforge.png)
 
 ## Features
 ### React Templates
@@ -56,7 +64,7 @@ Here are two React templates that you can use:
   - It also includes CSS libraries for styling.
   - It has user login and signup features.
 
-Both templates are designed to make it easier for you to start building your React applications with the necessary features. You can choose the template that suits your needs and customize it according to your preferences.
+Both templates are designed to make it easier for you to start building your React applications with the necessary features. They include a Navbar and Footer ready to set up at your needs! You can choose the template that suits your needs and customize it according to your preferences.
 
 
 ### Express servers
@@ -123,3 +131,14 @@ By contributing to this project, you agree that your contributions will be licen
 
 ## Testing
 There are no test for the main project quite yet. I am in the process of framing and getting ready to implement those test in the future. Keep an eye out for the testing update to be released in the future
+
+## Future Developement
+My Long term goal for this project is to have every template readily available for all of the major coding languages using all of the popular frameworks for ease of use starting new projects. The most frustrating thing I have come to find is having no template that eases the load of creating a new project to let me get working on the things I really want to build. 
+
+I am looking to include the following into the project for easy start web servers:
+- JavaScript (Monolithic fullstack application)
+- Python (Django, flask, etc.., postgres for the database?)
+- C# (Microservice/Vanilla server tempalates using nuget packages)
+- Java (Microservice w/spring, regular spring servers, spring data JPA, maybe redis for sessions?)
+
+Anyone with experience in these technologies that would like to contribute please feel free to reach out and help me bring this idea to life!
