@@ -1,0 +1,11 @@
+/* 
+ * You need to create a .env file in the root directory of the project and add the following variables to it. Replace the values with your own. This file is used to store environment variables that are used in the project.
+ * 
+ * It is not committed to the repository, so it is safe to store sensitive information in it.
+ *
+*/
+
+DB_NAME=projectforge-cli // This is the name of the database that the project will use. You can change it to any name you want.
+DB_USER=root // This is the username of the database that the project will use. You should change this to what your sql username is.
+DB_PASSWORD=123456789 // This is the password of the database that the project will use. You should change this to what your sql password is.
+JWT_KEY=supersecret // This is the secret key that is used to sign the JWT tokens. You should change this to a secret key that you want to use. You will need this to sign and verify JWT tokens.

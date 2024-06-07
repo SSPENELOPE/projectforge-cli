@@ -20,6 +20,7 @@ or
 yarn global add projectforge-cli
 ```
 
+NOTE: I HAVE NOT TESTED THIS PROJECT ON A MAC OS. Anyone willing to test that for me and give feedback would be greatly appreciated!
 ## Usage
 
 Once installed, you can use the ProjectForge CLI to create new projects, manage tasks, and collaborate with your team. The CLI provides a set of templates that you can use as a starting point for your projects.
